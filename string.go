@@ -32,13 +32,18 @@ func ByteToString(b []byte) string {
 	return string(b[:])
 }
 
-// ReverseString returns the string reversed
-func ReverseString(s string) string {
+// Rstring returns the string reversed
+func Rstring(s string) string {
 	runes := []rune(s)
 	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
 		runes[i], runes[j] = runes[j], runes[i]
 	}
 	return string(runes)
+}
+
+// ReverseString is an alias of Rstring
+func ReverseString(s string) string {
+	return Rstring(s)
 }
 
 // LcFirst returns a string with the first character lowercased
