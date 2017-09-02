@@ -5,6 +5,55 @@ import (
 	"testing"
 )
 
+// TestFilterString tests the FilterString function
+func TestFilterString(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		s        []string
+		expected []string
+	}{
+		{[]string{"foo", "bar", "baz"}, []string{"bar", "baz"}},
+		{[]string{"foo", "\u0062\u0061\u0072", "baz"}, []string{"bar", "baz"}},
+		{[]string{"foo", "far", "faz"}, []string{}},
+		{[]string{}, []string{}},
+	}
+
+	for _, test := range tests {
+		actual := FilterString(test.s, func(s string) bool {
+			return strings.HasPrefix(s, "b")
+		})
+		if !EqSlices(&actual, &test.expected) {
+			t.Errorf("Expected FilterString(%q, fn) to be %q, got %v", test.s, test.expected, actual)
+		}
+	}
+}
+
+// TestFilterInt tests the FilterInt function
+func TestFilterInt(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		s        []int
+		expected []int
+	}{
+		{[]int{0, 2, 4}, []int{0, 2, 4}},
+		{[]int{}, []int{}},
+		{[]int{2, 4, 5}, []int{2, 4}},
+		{[]int{5}, []int{}},
+		{[]int{-2, 4}, []int{-2, 4}},
+	}
+
+	for _, test := range tests {
+		actual := FilterInt(test.s, func(i int) bool {
+			return i%2 == 0
+		})
+		if !EqSlices(&actual, &test.expected) {
+			t.Errorf("Expected FilterString(%q, fn) to be %q, got %v", test.s, test.expected, actual)
+		}
+	}
+}
+
 // TestAllString tests the AllString function
 func TestAllString(t *testing.T) {
 	t.Parallel()

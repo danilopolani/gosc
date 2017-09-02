@@ -9,6 +9,42 @@ import (
 	"time"
 )
 
+// FilterString returns a new slice containing all strings in the slice that satisfy the predicate f.
+func FilterString(s []string, f func(string) bool) []string {
+	sf := make([]string, 0)
+	for _, v := range s {
+		if f(v) {
+			sf = append(sf, v)
+		}
+	}
+
+	return sf
+}
+
+// FilterInt returns a new slice containing all ints in the slice that satisfy the predicate f.
+func FilterInt(s []int, f func(int) bool) []int {
+	sf := make([]int, 0)
+	for _, v := range s {
+		if f(v) {
+			sf = append(sf, v)
+		}
+	}
+
+	return sf
+}
+
+// FilterFloat returns a new slice containing all float64s in the slice that satisfy the predicate f.
+func FilterFloat(s []float64, f func(float64) bool) []float64 {
+	sf := make([]float64, 0)
+	for _, v := range s {
+		if f(v) {
+			sf = append(sf, v)
+		}
+	}
+
+	return sf
+}
+
 // AllString returns true if all of the strings in the slice satisfy the predicate f
 func AllString(s []string, f func(string) bool) bool {
 	for _, v := range s {
