@@ -9,6 +9,33 @@ import (
 	"time"
 )
 
+// MapString a new slice containing the results of applying the function f to each string in the original slice.
+func MapString(s []string, f func(string) string) []string {
+	sm := make([]string, len(s))
+	for i, v := range s {
+		sm[i] = f(v)
+	}
+	return sm
+}
+
+// MapInt a new slice containing the results of applying the function f to each int in the original slice.
+func MapInt(s []int, f func(int) int) []int {
+	sm := make([]int, len(s))
+	for i, v := range s {
+		sm[i] = f(v)
+	}
+	return sm
+}
+
+// MapFloat a new slice containing the results of applying the function f to each float64 in the original slice.
+func MapFloat(s []float64, f func(float64) float64) []float64 {
+	sm := make([]float64, len(s))
+	for i, v := range s {
+		sm[i] = f(v)
+	}
+	return sm
+}
+
 // FilterString returns a new slice containing all strings in the slice that satisfy the predicate f.
 func FilterString(s []string, f func(string) bool) []string {
 	sf := make([]string, 0)

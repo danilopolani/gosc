@@ -5,6 +5,51 @@ import (
 	"testing"
 )
 
+// TestMapString tests the MapString function
+func TestMapString(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		s        []string
+		expected []string
+	}{
+		{[]string{"foo", "bar", "baz"}, []string{"FOO", "BAR", "BAZ"}},
+		{[]string{"foo", "\u0062\u0061\u0072", "baz"}, []string{"FOO", "BAR", "BAZ"}},
+		{[]string{}, []string{}},
+	}
+
+	for _, test := range tests {
+		actual := MapString(test.s, strings.ToUpper)
+		if !EqSlices(&actual, &test.expected) {
+			t.Errorf("Expected MapString(%q, fn) to be %q, got %v", test.s, test.expected, actual)
+		}
+	}
+}
+
+// TestMapInt tests the MapInt function
+func TestMapInt(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		s        []int
+		expected []int
+	}{
+		{[]int{0, 2, 4}, []int{0, 4, 8}},
+		{[]int{}, []int{}},
+		{[]int{2, 4, 5}, []int{4, 8, 10}},
+		{[]int{-2}, []int{-4}},
+	}
+
+	for _, test := range tests {
+		actual := MapInt(test.s, func(i int) int {
+			return i * 2
+		})
+		if !EqSlices(&actual, &test.expected) {
+			t.Errorf("Expected MapInt(%q, fn) to be %q, got %v", test.s, test.expected, actual)
+		}
+	}
+}
+
 // TestFilterString tests the FilterString function
 func TestFilterString(t *testing.T) {
 	t.Parallel()
