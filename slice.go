@@ -8,6 +8,23 @@ import (
 	"time"
 )
 
+// Index returns the index of an element in a slice or -1 if not found
+func Index(s interface{}, t interface{}) int {
+	// Retrieve slices
+	sl := reflect.ValueOf(s).Elem()
+	if sl.Len() == 0 {
+		return -1
+	}
+
+	for i := 0; i < sl.Len(); i++ {
+		if sl.Index(i).Interface() == t {
+			return i
+		}
+	}
+
+	return -1
+}
+
 // Delete an item from a slice
 func Delete(s interface{}, i int) {
 	// Retrieve slice

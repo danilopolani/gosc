@@ -4,6 +4,75 @@ import (
 	"testing"
 )
 
+// TestStringIndex tests the Index function with strings slice
+func TestStringIndex(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		haystack []string
+		needle   string
+		expected int
+	}{
+		{[]string{"foo", "bar"}, "bar", 1},
+		{[]string{"foo", "bar"}, "foo", 0},
+		{[]string{"foo", "bar"}, "nil", -1},
+		{[]string{"foo", "bar"}, "\u0062\u0061\u0072", 1},
+		{[]string{"foo", "bar"}, "0", -1},
+		{[]string{"foo", "bar"}, "", -1},
+	}
+
+	for _, test := range tests {
+		actual := Index(&test.haystack, test.needle)
+		if actual != test.expected {
+			t.Errorf("Expected Index(%q, %q) to be %v, got %v", test.haystack, test.needle, test.expected, actual)
+		}
+	}
+}
+
+// TestIntIndex tests the Index function with ints slice
+func TestIntIndex(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		haystack []int
+		needle   int
+		expected int
+	}{
+		{[]int{1, -5}, -5, 1},
+		{[]int{1, -5}, 0, -1},
+		{[]int{1, -5}, 1, 0},
+	}
+
+	for _, test := range tests {
+		actual := Index(&test.haystack, test.needle)
+		if actual != test.expected {
+			t.Errorf("Expected Index(%q, %q) to be %v, got %v", test.haystack, test.needle, test.expected, actual)
+		}
+	}
+}
+
+// TestFloatIndex tests the Index function with ints slice
+func TestFloatIndex(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		haystack []float64
+		needle   float64
+		expected int
+	}{
+		{[]float64{1, 6.3, -5.7}, -5.7, 2},
+		{[]float64{1, 6.3, -5.7}, 0, -1},
+		{[]float64{1, 6.3, -5.7}, 1, 0},
+	}
+
+	for _, test := range tests {
+		actual := Index(&test.haystack, test.needle)
+		if actual != test.expected {
+			t.Errorf("Expected Index(%q, %q) to be %v, got %v", test.haystack, test.needle, test.expected, actual)
+		}
+	}
+}
+
 // TestEqStringSlices tests the EqSlices function with strings slice
 func TestEqStringSlice(t *testing.T) {
 	t.Parallel()
