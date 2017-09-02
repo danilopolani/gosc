@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"reflect"
 	"sort"
+	"strings"
 	"time"
 )
 
@@ -18,6 +19,21 @@ func Index(s interface{}, t interface{}) int {
 
 	for i := 0; i < sl.Len(); i++ {
 		if sl.Index(i).Interface() == t {
+			return i
+		}
+	}
+
+	return -1
+}
+
+// Indexi returns the index of a string in a slice or -1 if not found. Case Insentive.
+func Indexi(s []string, t string) int {
+	if len(s) == 0 || len(t) == 0 {
+		return -1
+	}
+
+	for i, v := range s {
+		if strings.ToLower(v) == strings.ToLower(t) {
 			return i
 		}
 	}

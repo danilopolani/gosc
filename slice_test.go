@@ -4,6 +4,31 @@ import (
 	"testing"
 )
 
+// TestIndexi tests the Indexi function
+func TestIndexi(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		haystack []string
+		needle   string
+		expected int
+	}{
+		{[]string{"FOO", "bAr"}, "bar", 1},
+		{[]string{"FOO", "bAr"}, "foo", 0},
+		{[]string{"FOO", "bAr"}, "nil", -1},
+		{[]string{"FOO", "bAr"}, "\u0062\u0061\u0072", 1},
+		{[]string{"FOO", "bAr"}, "0", -1},
+		{[]string{"FOO", "bAr"}, "", -1},
+	}
+
+	for _, test := range tests {
+		actual := Indexi(test.haystack, test.needle)
+		if actual != test.expected {
+			t.Errorf("Expected Indexi(%q, %q) to be %v, got %v", test.haystack, test.needle, test.expected, actual)
+		}
+	}
+}
+
 // TestStringIndex tests the Index function with strings slice
 func TestStringIndex(t *testing.T) {
 	t.Parallel()
