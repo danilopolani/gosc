@@ -12,8 +12,8 @@ Install the package from your terminal with `go get github.com/danilopolani/gosc
 # Available helpers
 
 ## Slices
-- [Some / Any](#someany) - Check if at least one item of the given slice satisfies the given function.
-- [Every / All](#everyall) - Check if all items of the given slice satisfy the given function.
+- [Some / Any](#some--any) - Check if at least one item of the given slice satisfies the given function.
+- [Every / All](#every--all) - Check if all items of the given slice satisfy the given function.
 - [Map](#map) - Apply the given function to the given slice.
 - [Filter](#filter) - Filter out to the given slice the items that don't satisfy the given function.
 - [Index](#index) - Find the index of an item in the given slice.
