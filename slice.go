@@ -9,6 +9,36 @@ import (
 	"time"
 )
 
+// AnyString returns true if one of the strings in the slice satisfies the predicate f
+func AnyString(s []string, f func(string) bool) bool {
+	for _, v := range s {
+		if f(v) {
+			return true
+		}
+	}
+	return false
+}
+
+// AnyInt returns true if one of the ints in the slice satisfies the predicate f
+func AnyInt(s []int, f func(int) bool) bool {
+	for _, v := range s {
+		if f(v) {
+			return true
+		}
+	}
+	return false
+}
+
+// AnyFloat returns true if one of the float64s in the slice satisfies the predicate f
+func AnyFloat(s []float64, f func(float64) bool) bool {
+	for _, v := range s {
+		if f(v) {
+			return true
+		}
+	}
+	return false
+}
+
 // Index returns the index of an element in a slice or -1 if not found
 func Index(s interface{}, t interface{}) int {
 	// Retrieve slices

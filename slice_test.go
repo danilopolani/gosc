@@ -1,8 +1,59 @@
 package gosc
 
 import (
+	"strings"
 	"testing"
 )
+
+// TestAnyString tests the AnyString function
+func TestAnyString(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		s        []string
+		expected bool
+	}{
+		{[]string{"foo", "bar", "baz"}, true},
+		{[]string{"foo", "\u0062\u0061\u0072", "baz"}, true},
+		{[]string{"foo", "bar", "buz"}, true},
+		{[]string{"foo", "bur", "buz"}, false},
+	}
+
+	for _, test := range tests {
+		actual := AnyString(test.s, func(s string) bool {
+			return strings.HasPrefix(s, "ba")
+		})
+		if actual != test.expected {
+			t.Errorf("Expected AnyString(%q, fn) to be %v, got %v", test.s, test.expected, actual)
+		}
+	}
+}
+
+// TestAnyInt tests the AnyInt function
+func TestAnyInt(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		s        []int
+		expected bool
+	}{
+		{[]int{0, 2, 4}, true},
+		{[]int{}, false},
+		{[]int{2, 4, 5}, true},
+		{[]int{5}, false},
+		{[]int{5, 2}, true},
+		{[]int{-2, 4}, true},
+	}
+
+	for _, test := range tests {
+		actual := AnyInt(test.s, func(i int) bool {
+			return i%2 == 0
+		})
+		if actual != test.expected {
+			t.Errorf("Expected AnyInt(%q, fn) to be %v, got %v", test.s, test.expected, actual)
+		}
+	}
+}
 
 // TestIndexi tests the Indexi function
 func TestIndexi(t *testing.T) {
