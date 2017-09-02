@@ -39,7 +39,7 @@ Install the package from your terminal with `go get github.com/danilopolani/gosc
 - [FromBase64](#frombase64) - Decode a string from base64.
 - [IsBool](#isbool) - Check if a string is a boolean.
 - [IsEmail](#isemail) - Check if a string is an email address.
-- [IsURL](#isulrl) - Check if a string is a valid URL.
+- [IsURL](#isurl) - Check if a string is a valid URL.
 - [IsJSON](#isjson) - Check if a string is a valid JSON document.
 - [IsIP](#isip) - Check if a string is an IPv4.
 - [IsHexColor](#ishexcolor) - Check if a string is a hex color.
@@ -57,6 +57,11 @@ Install the package from your terminal with `go get github.com/danilopolani/gosc
 - [IsFloat](#isfloat) - Check if a string is a float number and numbers.
 - [Utoa](#utoa) - Transform a uint into a string. 
 - [Rand](#rand) - Pick a random int from the given range.
+
+# To do
+- [ ] Slice reduce
+- [ ] Map keys
+- [ ] Map values
 
 # Helpers
 The detailed list of helpers with examples. 
@@ -282,7 +287,7 @@ Convert a string to *camelCase*.
 **alias**: `ToCamelCase`  
 **Return**: `string`  
 **Known bugs**:  
-[] Doesn't lowercase the string
+- [] Doesn't lowercase the string
 
 ```go
 fmt.Println(gosc.ToCamel("foo bar")) // fooBar
@@ -294,7 +299,7 @@ Convert a string to *PascalCase*.
 **alias**: `ToPascalCase`  
 **Return**: `string`  
 **Known bugs**:  
-[] Doesn't lowercase the string
+- [] Doesn't lowercase the string
 
 ```go
 fmt.Println(gosc.ToPascal("foo bar")) // FooBar
@@ -374,8 +379,8 @@ fmt.Println(gosc.IsEmail("")) // false
 Check if a string is a valid URL.  
 **Return**: `bool`  
 **Known bugs**:  
-[] Other protocols (such as FTP) return true
-[] Just the procotol returns true
+- [] Other protocols (such as FTP) return true
+- [] Just the procotol returns true
 
 ```go
 fmt.Println(gosc.IsURL("https://github.com")) // true
