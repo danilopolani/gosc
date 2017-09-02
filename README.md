@@ -16,6 +16,8 @@ Install the package from your terminal with `go get github.com/danilopolani/gosc
 - [Every / All](#everyall) - Check if all items of the given slice satisfy the given function.
 - [Map](#map) - Apply the given function to the given slice.
 - [Filter](#filter) - Filter out to the given slice the items that don't satisfy the given function.
+- [Index](#index) - Find the index of an item in the given slice.
+- [Indexi](#indexi) - Find the index of an item in the given slice. (Case Insenstive)
 - [Delete](#delete) - Delete an item from a slice.
 - [Rsort](#rsort) - Reverse the order (*desc*) of an ordered slice.
 - [EqSlices](#eqslices) - Check if two slices are equal. 
@@ -112,7 +114,7 @@ Filter out to the given slice the items that don't satisfy the given function.
 **Methods**: `FilterString`, `FilterInt`, `FilterFloat`  
 
 ```go
-slice1 := []string{"foo", bar", "baz"}
+slice1 := []string{"foo", "bar", "baz"}
 slice2 := []int{3, 5}
 
 fmt.Println(FilterString(slice1, func(s string) bool {
@@ -121,6 +123,28 @@ fmt.Println(FilterString(slice1, func(s string) bool {
 fmt.Println(FilterInt(slice2, func(i int) bool {
   return i%2 == 0
 })) // []
+```
+
+### Index
+Find the index of an item in the given slice.  
+**Return**: `int` (`-1` if not found)
+
+```go
+slice1 := []string{"foo", "bar", "baz"}
+slice2 := []int{3, 5}
+
+fmt.Println(Index(&slice1, "baz")) // 2
+fmt.Println(Index(&slice2, 6) // -1
+```
+
+### Indexi
+Find the index of an item in the given slice. (Case Insensitive)  
+**Return**: `int` (`-1` if not found)
+
+```go
+slice1 := []string{"foo", "BAR", "baz"}
+
+fmt.Println(Index(&slice1, "BaR")) // 1
 ```
 
 ### Delete
