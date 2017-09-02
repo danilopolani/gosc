@@ -9,6 +9,72 @@ import (
 	"time"
 )
 
+// AllString returns true if all of the strings in the slice satisfy the predicate f
+func AllString(s []string, f func(string) bool) bool {
+	for _, v := range s {
+		if !f(v) {
+			return false
+		}
+	}
+
+	return true
+}
+
+// AllInt returns true if all of the ints in the slice satisfy the predicate f
+func AllInt(s []int, f func(int) bool) bool {
+	for _, v := range s {
+		if !f(v) {
+			return false
+		}
+	}
+
+	return true
+}
+
+// AllFloat returns true if all of the float64s in the slice satisfy the predicate f
+func AllFloat(s []float64, f func(float64) bool) bool {
+	for _, v := range s {
+		if !f(v) {
+			return false
+		}
+	}
+
+	return true
+}
+
+// EveryString returns true if all of the strings in the slice satisfy the predicate f
+func EveryString(s []string, f func(string) bool) bool {
+	for _, v := range s {
+		if !f(v) {
+			return false
+		}
+	}
+
+	return true
+}
+
+// EveryInt returns true if all of the ints in the slice satisfy the predicate f
+func EveryInt(s []int, f func(int) bool) bool {
+	for _, v := range s {
+		if !f(v) {
+			return false
+		}
+	}
+
+	return true
+}
+
+// EveryFloat returns true if all of the float64s in the slice satisfy the predicate f
+func EveryFloat(s []float64, f func(float64) bool) bool {
+	for _, v := range s {
+		if !f(v) {
+			return false
+		}
+	}
+
+	return true
+}
+
 // AnyString returns true if one of the strings in the slice satisfies the predicate f
 func AnyString(s []string, f func(string) bool) bool {
 	for _, v := range s {
@@ -31,6 +97,36 @@ func AnyInt(s []int, f func(int) bool) bool {
 
 // AnyFloat returns true if one of the float64s in the slice satisfies the predicate f
 func AnyFloat(s []float64, f func(float64) bool) bool {
+	for _, v := range s {
+		if f(v) {
+			return true
+		}
+	}
+	return false
+}
+
+// SomeString returns true if one of the strings in the slice satisfies the predicate f
+func SomeString(s []string, f func(string) bool) bool {
+	for _, v := range s {
+		if f(v) {
+			return true
+		}
+	}
+	return false
+}
+
+// SomeInt returns true if one of the ints in the slice satisfies the predicate f
+func SomeInt(s []int, f func(int) bool) bool {
+	for _, v := range s {
+		if f(v) {
+			return true
+		}
+	}
+	return false
+}
+
+// SomeFloat returns true if one of the float64s in the slice satisfies the predicate f
+func SomeFloat(s []float64, f func(float64) bool) bool {
 	for _, v := range s {
 		if f(v) {
 			return true

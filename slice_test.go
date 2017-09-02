@@ -5,6 +5,55 @@ import (
 	"testing"
 )
 
+// TestAllString tests the AllString function
+func TestAllString(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		s        []string
+		expected bool
+	}{
+		{[]string{"boo", "bar", "baz"}, true},
+		{[]string{"boo", "\u0062\u0061\u0072", "baz"}, true},
+		{[]string{"foo", "bar", "baz"}, false},
+		{[]string{}, true},
+	}
+
+	for _, test := range tests {
+		actual := AllString(test.s, func(s string) bool {
+			return strings.HasPrefix(s, "b")
+		})
+		if actual != test.expected {
+			t.Errorf("Expected AllString(%q, fn) to be %v, got %v", test.s, test.expected, actual)
+		}
+	}
+}
+
+// TestAllInt tests the AllInt function
+func TestAllInt(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		s        []int
+		expected bool
+	}{
+		{[]int{0, 2, 4}, true},
+		{[]int{}, true},
+		{[]int{2, 4, 5}, false},
+		{[]int{5}, false},
+		{[]int{-2, 4}, true},
+	}
+
+	for _, test := range tests {
+		actual := AllInt(test.s, func(i int) bool {
+			return i%2 == 0
+		})
+		if actual != test.expected {
+			t.Errorf("Expected AllInt(%q, fn) to be %v, got %v", test.s, test.expected, actual)
+		}
+	}
+}
+
 // TestAnyString tests the AnyString function
 func TestAnyString(t *testing.T) {
 	t.Parallel()
