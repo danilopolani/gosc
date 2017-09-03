@@ -418,8 +418,6 @@ func InSlice(v interface{}, s interface{}) bool {
 	default:
 		return false
 	}
-
-	return false
 }
 
 func inIntSlice(v int, s reflect.Value) bool {

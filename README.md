@@ -1,7 +1,9 @@
 # GOsc - Simplify your waste-bytes helper functions
 ![Travis CI build](https://api.travis-ci.org/danilopolani/gosc.svg?branch=master)
 ![GitHub version](https://badge.fury.io/gh/danilopolani%2Fgosc.svg)
-![Coverage Status](https://coveralls.io/repos/github/danilopolani/gosc/badge.svg?branch=master)
+[![GoDoc](https://godoc.org/github.com/danilopolani/gosc?status.svg)](https://godoc.org/github.com/danilopolani/gosc)
+[![GoReport](https://goreportcard.com/badge/github.com/danilopolani/gosc)](https://goreportcard.com/report/github.com/danilopolani/gosc)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 GOsc is an helper package for Go, written to be user friendly with alias and simple examples.  
 

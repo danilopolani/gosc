@@ -61,7 +61,7 @@ func LowerFirst(s string) string {
 	return LcFirst(s)
 }
 
-// UpperFirst returns a string with the first character uppercased
+// UcFirst returns a string with the first character uppercased
 func UcFirst(s string) string {
 	if s == "" {
 		return ""
@@ -381,7 +381,7 @@ func IsOnlyAlphaNum(s string) bool {
 // "Generator" section
 // ------------------
 
-// Unq returns a unique token based on current time and crypted in sha256
+// Uniq returns a unique token based on current time and crypted in sha256
 func Uniq() string {
 	t := strconv.Itoa(int(time.Now().UnixNano()))
 	return fmt.Sprintf("%x", sha256.Sum256([]byte("gosc_"+t)))

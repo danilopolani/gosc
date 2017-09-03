@@ -287,7 +287,7 @@ func TestFloatIndex(t *testing.T) {
 	for _, test := range tests {
 		actual := Index(&test.haystack, test.needle)
 		if actual != test.expected {
-			t.Errorf("Expected Index(%q, %q) to be %v, got %v", test.haystack, test.needle, test.expected, actual)
+			t.Errorf("Expected Index(%v, %f) to be %v, got %v", test.haystack, test.needle, test.expected, actual)
 		}
 	}
 }
