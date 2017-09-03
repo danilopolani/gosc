@@ -1,3 +1,4 @@
+// Package gosc is an helper package for Go, written to be user friendly with alias and inspired by Lodash.
 package gosc
 
 import (
