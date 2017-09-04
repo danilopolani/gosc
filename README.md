@@ -64,6 +64,7 @@ Install the package from your terminal with `go get github.com/danilopolani/gosc
 
 # To do
 - [ ] Slice reduce
+- [ ] Slice unique
 - [ ] Map keys
 - [ ] Map values
 
