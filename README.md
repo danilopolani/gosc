@@ -11,7 +11,7 @@ If you need a new helper, please open an issue and if you have already the code,
 
 # Installation
 
-Install the package from your terminal with `go get github.com/danilopolani/gosc` and then import it in your project: `import "gosc"`.
+Install the package from your terminal with `go get github.com/danilopolani/gosc` and then import it in your project: `import "github.com/danilopolani/gosc"`.
 
 # Available helpers
 
@@ -38,6 +38,7 @@ Install the package from your terminal with `go get github.com/danilopolani/gosc
 - [ToCamel](#tocamel) - Convert a string to *camelCase*.
 - [ToPascal](#topascal) - Convert a string to *PascalCase*.
 - [ToInt](#toint) - Convert a string to an int.
+- [ToInt64](#toint64) - Convert a string to an int64.
 - [ToUint](#touint) - Convert a string to a uint.
 - [ToBase64](#tobase64) - Encode a string in base64.
 - [FromBase64](#frombase64) - Decode a string from base64.
@@ -331,6 +332,16 @@ Convert a string to an int.
 fmt.Println(gosc.ToInt("-53")) // -53
 fmt.Println(gosc.ToInt("542.8")) // 542
 fmt.Println(gosc.ToInt("foo")) // 0
+```
+
+### ToInt64
+Convert a string to an int64.
+**Return**: `int64`
+
+```go
+fmt.Println(gosc.ToInt64("-53")) // -53
+fmt.Println(gosc.ToInt64("542.8")) // 542
+fmt.Println(gosc.ToInt64("foo")) // 0
 ```
 
 ### ToUint

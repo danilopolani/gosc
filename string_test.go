@@ -226,6 +226,30 @@ func TestToInt(t *testing.T) {
 	}
 }
 
+// TestToInt64 tests the ToInt64 function
+func TestToInt64(t *testing.T) {
+	t.Parallel()
+
+	var tests = []struct {
+		data     string
+		expected int64
+	}{
+		{"123", 123},
+		{"-42", -42},
+		{"5.3", 5},
+		{"test", 0},
+		{"", 0},
+		{"소주", 0},
+	}
+
+	for _, test := range tests {
+		actual := ToInt64(test.data)
+		if actual != test.expected {
+			t.Errorf("Expected ToInt64(%q) to be %v, got %v", test.data, test.expected, actual)
+		}
+	}
+}
+
 // TestToUint tests the ToUint function
 func TestToUint(t *testing.T) {
 	t.Parallel()

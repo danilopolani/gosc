@@ -174,6 +174,20 @@ func ToInt(s string) int {
 	return v
 }
 
+// ToInt64 returns an int64 from a string
+func ToInt64(s string) int64 {
+	if strings.Contains(s, ".") {
+		s = strings.Split(s, ".")[0]
+	}
+
+	v, err := strconv.ParseInt(s, 10, 64)
+	if err != nil {
+		return 0
+	}
+
+	return v
+}
+
 // ToUint returns a uint from a string
 func ToUint(s string) uint {
 	if strings.Contains(s, ".") {
