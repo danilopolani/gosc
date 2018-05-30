@@ -37,6 +37,7 @@ Install the package from your terminal with `go get github.com/danilopolani/gosc
 - [ToSnake](#tosnake) - Convert a string to *snake_case*.
 - [ToCamel](#tocamel) - Convert a string to *camelCase*.
 - [ToPascal](#topascal) - Convert a string to *PascalCase*.
+- [ToKebab](#tokebab) - Convert a string to *kebab-case* (aka *slug*).
 - [ToInt](#toint) - Convert a string to an int.
 - [ToInt64](#toint64) - Convert a string to an int64.
 - [ToUint](#touint) - Convert a string to a uint.
